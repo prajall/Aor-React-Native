@@ -1,6 +1,13 @@
-import { View, Text, ScrollView, TextInput, Image } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  Image,
+  Touchable,
+} from "react-native";
 import React, { useState } from "react";
-import { Stack } from "expo-router";
+import { Link, router, Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FormField from "../../components/FormField";
 import { isSearchBarAvailableForCurrentPlatform } from "react-native-screens";
@@ -14,7 +21,9 @@ const SignIn = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    router.push("/home");
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full text-white p-2">
@@ -50,6 +59,12 @@ const SignIn = () => {
             handlePress={handleSubmit}
             isLoading={isSubmitting}
           />
+          <Text className="text-white text-center mt-6">
+            New to Aora ?{" "}
+            <Link href={"sign-up"} className="text-secondary">
+              Sign Up
+            </Link>
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
